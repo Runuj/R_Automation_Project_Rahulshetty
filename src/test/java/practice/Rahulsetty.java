@@ -72,10 +72,11 @@ public void checkbox() throws InterruptedException
 
 //------------------------------Switch to new Window Example----------------------------------------------------	
 
-@Test(priority=8)
+@Test(priority=5)
 public void switchwindow()
 {
 	driver.findElement(By.id("openwindow")).click();
+	String originalWindowHandle = driver.getWindowHandle();
 	Set<String> windowids= driver.getWindowHandles();
 	
 	for(String Windowid : windowids) 
@@ -84,16 +85,20 @@ public void switchwindow()
 		if(driver.getCurrentUrl().equals("https://www.qaclickacademy.com/"))
 		{
 			driver.findElement(By.linkText("Access all our Courses")).click();
+			break;
 		}
+		
 	}
+	driver.switchTo().window(originalWindowHandle);
 }
 
 
 //------------------------------Switch to new Tab Example----------------------------------------------------
-@Test(priority=7)
+@Test(priority=6)
 public void newtab() 
 {
 	 driver.findElement(By.id("opentab")).click();
+	 String originalWindowHandle = driver.getWindowHandle(); // Store the original window handle
 	 Set<String> tabs= driver.getWindowHandles();
 	 for(String tab : tabs)
 		{
@@ -101,14 +106,15 @@ public void newtab()
 			if(driver.getCurrentUrl().equals("https://www.qaclickacademy.com/"))
 			{
 				driver.findElement(By.linkText("Blog")).click();
+				break;
 			}
 		}
-	 
+	 driver.switchTo().window(originalWindowHandle);  // Switch back to the original window
 }
 
 //------------------------------Switch to Alert Example----------------------------------------------------
 
-@Test(priority=5)
+@Test(priority=7)
 public void alert() throws InterruptedException
 {
 	driver.findElement(By.id("alertbtn")).click();
@@ -121,7 +127,7 @@ public void alert() throws InterruptedException
 
 //------------------------------Switch to Alert Example----------------------------------------------------
 
-@Test(priority=6)
+@Test(priority=8)
 public void alertconfirm() throws InterruptedException
 {
 	driver.findElement(By.id("confirmbtn")).click();
@@ -131,5 +137,53 @@ public void alertconfirm() throws InterruptedException
 	Thread.sleep(3000);
 	
 }
+
+//------------------------------Web table Example----------------------------------------------------
+
+@Test(priority=9)
+public void webtable() throws InterruptedException
+{
+	WebElement table = driver.findElement(By.id("product"));
+
+    // Find all rows in the table
+    List<WebElement> rows = table.findElements(By.tagName("tr"));
+
+    // Iterate through each row
+    for (WebElement row : rows) {
+        // Find all columns in the row
+        List<WebElement> columns = row.findElements(By.tagName("td"));
+        // Iterate through each column
+        for (WebElement column : columns) {
+            // Print the text in each column
+            System.out.print(column.getText() + "\t");
+        }
+        System.out.println(); // Move to the next line after printing all columns in the row
+    }
+}
+
+//------------------------------Web table with Fixed Header Example----------------------------------------------------
+
+@Test(priority=10)
+public void webtableFixedheader() throws InterruptedException
+{
+	 WebElement table = driver.findElement(By.xpath("(//table[@id='product'])[2]"));
+
+     // Find all rows in the table (including header row)
+     List<WebElement> rows = table.findElements(By.tagName("tr"));
+
+     // Iterate through each row
+     for (WebElement row : rows) {
+         // Find all columns in the row
+         List<WebElement> columns = row.findElements(By.tagName("td"));
+         // Iterate through each column
+         for (WebElement column : columns) {
+             // Print the text in each column
+             System.out.print(column.getText() + "\t");
+         }
+         System.out.println(); // Move to the next line after printing all columns in the row
+     }
+}
+
+
 
 }

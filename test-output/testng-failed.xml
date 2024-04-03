@@ -5,8 +5,9 @@
     <classes>
       <class name="practice.Rahulsetty">
         <methods>
+          <include name="driverClose"/>
+          <include name="switchwindow"/>
           <include name="driverInitialize"/>
-          <include name="radio"/>
         </methods>
       </class> <!-- practice.Rahulsetty -->
     </classes>
