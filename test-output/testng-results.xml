@@ -2,20 +2,23 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-04-04T01:20:54 IST" name="Default suite" finished-at="2024-04-04T01:21:09 IST" duration-ms="14370">
+  <suite started-at="2024-04-04T23:00:04 IST" name="Default suite" finished-at="2024-04-04T23:00:24 IST" duration-ms="20099">
     <groups>
+      <group name="smoke">
+        <method signature="Rahulsetty.screenshot()[pri:12, instance:practice.Rahulsetty@7a35b0f5]" name="screenshot" class="practice.Rahulsetty"/>
+      </group> <!-- smoke -->
     </groups>
-    <test started-at="2024-04-04T01:20:54 IST" name="Default test" finished-at="2024-04-04T01:21:09 IST" duration-ms="14370">
+    <test started-at="2024-04-04T23:00:04 IST" name="Default test" finished-at="2024-04-04T23:00:24 IST" duration-ms="20099">
       <class name="practice.Rahulsetty">
-        <test-method is-config="true" signature="driverInitialize()[pri:0, instance:practice.Rahulsetty@18271936]" started-at="2024-04-04T01:20:54 IST" name="driverInitialize" finished-at="2024-04-04T01:21:04 IST" duration-ms="10060" status="PASS">
+        <test-method is-config="true" signature="driverInitialize()[pri:0, instance:practice.Rahulsetty@7a35b0f5]" started-at="2024-04-04T23:00:04 IST" name="driverInitialize" finished-at="2024-04-04T23:00:14 IST" duration-ms="10345" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- driverInitialize -->
-        <test-method signature="webtableFixedheader()[pri:10, instance:practice.Rahulsetty@18271936]" started-at="2024-04-04T01:21:04 IST" name="webtableFixedheader" finished-at="2024-04-04T01:21:05 IST" duration-ms="889" status="PASS">
+        <test-method signature="screenshot()[pri:12, instance:practice.Rahulsetty@7a35b0f5]" started-at="2024-04-04T23:00:14 IST" name="screenshot" finished-at="2024-04-04T23:00:20 IST" duration-ms="6284" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- webtableFixedheader -->
-        <test-method is-config="true" signature="driverClose()[pri:0, instance:practice.Rahulsetty@18271936]" started-at="2024-04-04T01:21:05 IST" name="driverClose" finished-at="2024-04-04T01:21:09 IST" duration-ms="3349" status="PASS">
+        </test-method> <!-- screenshot -->
+        <test-method is-config="true" signature="driverClose()[pri:0, instance:practice.Rahulsetty@7a35b0f5]" started-at="2024-04-04T23:00:20 IST" name="driverClose" finished-at="2024-04-04T23:00:24 IST" duration-ms="3387" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- driverClose -->

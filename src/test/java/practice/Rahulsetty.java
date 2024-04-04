@@ -1,10 +1,17 @@
 package practice;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
@@ -185,5 +192,69 @@ public void webtableFixedheader() throws InterruptedException
 }
 
 
+//------------------------------show and hide Example----------------------------------------------------
+
+@Test(priority=11)
+public void showandhide() throws InterruptedException
+{
+	WebElement inputtext= driver.findElement(By.id("displayed-text"));
+	inputtext.sendKeys("Runu");
+	Thread.sleep(3000);
+	WebElement hide= driver.findElement(By.id("hide-textbox"));
+	hide.click();
+	Thread.sleep(3000);
+	WebElement show= driver.findElement(By.id("show-textbox"));
+	show.click();
+}
+
+//------------------------------Scrolldown the page Example----------------------------------------------------
+
+@Test(priority=12,groups = "smoke")
+public void scrolldown() throws InterruptedException
+{
+	WebElement mhv = driver.findElement(By.id("mousehover"));
+	//Scrolldown the page
+	JavascriptExecutor js= (JavascriptExecutor)driver; //as the JavascriptExecutor is an interface so need to cast it by the webdriver 
+	js.executeScript("arguments[0].scrollIntoView();",mhv);
+	Thread.sleep(3000);
+}
+
+//------------------------------mousehover Example----------------------------------------------------
+
+@Test(priority=12,groups = "smoke")
+public void mousehover() throws InterruptedException
+{
+	WebElement mousehvr = driver.findElement(By.id("mousehover"));
+	Thread.sleep(3000);
+	Actions a = new Actions(driver);//For mouse hover we need to create an object for the Action class
+	a.moveToElement(mousehvr).build().perform();
+	Thread.sleep(3000);
+	WebElement top = driver.findElement(By.linkText("Top"));
+	top.click();
+}
+
+//------------------------------Switch to frame Example----------------------------------------------------
+
+@Test(priority=12,groups = "smoke")
+public void frame() throws InterruptedException
+{
+	Thread.sleep(3000);
+	driver.switchTo().frame(0);
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("(//a[@href='lifetime-access'])[2]")).click();
+}
+
+//------------------------------Screenshot Example----------------------------------------------------
+
+@Test(priority=12,groups = "smoke")
+public void screenshot() throws InterruptedException, IOException
+{
+	TakesScreenshot ts = (TakesScreenshot)driver;
+	File src = ts.getScreenshotAs(OutputType.FILE);
+	Thread.sleep(3000);
+	File dest = new File("C:\\Users\\hp\\Desktop\\HYBRID AUTOMATION\\pic.png");
+	FileUtils.copyFile(src, dest);
+	Thread.sleep(3000);
+}
 
 }
